@@ -1,15 +1,20 @@
-//priority element with priority queue
-class PriorityElement<T> {
-    public T priority;
-    public T value;
-    public PriorityElement(T priority, T value);
+import HeapADT.java
+
+//implementation using int, maxheap
+class Heap<int, V> implements HeapADT {
+    private ArrayList<PriorityElement<int, V>> heap;
+    Heap() {
+        heap = new ArrayList<PriorityElement<int, V>>();
+    }
+    public V peek() {
+        if (!heap.isEmpty()) {
+            return heap[heap.size()-1];
+        }
+        return null;//no object found.
+    }
 }
-//interface describing heap abstract data type
-//will implement with arraylist
-interface HeapADT<T> {
-    public void add(T element);//insert at end of arraylist
-    public int leftChild(int n);
-    public int rightChild(int n);
-    public void bubbleUp(int n);
-    //public void remove
+class Test {
+    void main() {
+
+    }
 }
