@@ -1,20 +1,38 @@
 #include "Heap.h"
 using namespace std;
 
-//get index of parent, left child, or right child of node
-//within the array list that represents a heap. 
-int Heap::parent(int index) {
-    return (index+1)/2-1;
-}
-int Heap::leftChild(int index) {
-    return (index+1)*2-1;
-}
-int Heap::rightChild(int index) {
-    return (index+1)*2;
-}
-bool Heap::isLeaf(int index) {
-    if (index+1 > this->size/2) {
-        return true;
+V Heap::peek() {
+    if (this->nodeArrayList.size() > 0) {
+        return this->nodeArrayList[0];
     }
-    return false;
+    throw new runtime_error("Heap is Empty.");
+}
+
+int Heap::size() {
+    return this->nodeArrayList.size();
+}
+
+bool Heap::isEmpty() {
+    if (this->size() > 0) {
+        return false;
+    }
+    return true;
+}
+
+V Heap::remove() {
+    int size = this->size()
+    if (size > 1) {
+        swap(0, size-1);
+        Node *ret = this->nodeArrayList.pop_back();
+        bubbleDown(0);
+        return ret->value;
+    }
+    else if (size == 1) {
+        return this->nodeArrayList.pop_back();
+    }
+}
+
+V Heap::insert(P priority, V value) {
+    this->nodeArrayList.push_back(Node(priority, value));
+    bubbleUp(nodeArrayList->size()-1);
 }
